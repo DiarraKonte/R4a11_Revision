@@ -61,16 +61,19 @@ public class CalculIMC extends Activity {
 	private void deserialiserRessource() {
 
 		this.tv_imc = (TextView) findViewById(R.id.tv_imc);
-		// A compléter
-
-		// désérialistion du bouton de retour
-
-		// A compléter
+		this.tv_nom = (TextView) findViewById(R.id.tv_nom);
+		this.bt_back = findViewById(R.id.bt_back);
 	}
 
 	private void initConnections() {
 
 		// Mettre en place l'écouteur
+		this.bt_back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+			  finish();
+			}
+		});
 	}
 
 

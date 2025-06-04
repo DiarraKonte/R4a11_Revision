@@ -108,10 +108,23 @@ public class MainActivity extends Activity {
 
 	// Converti le poids de la TextView en float
 	private float getAndConvertPoids() throws IncorrectDataException {
+		String poidsStr = ed_poids.getText().toString().trim();
 
+		if (poidsStr.isEmpty()) {
+			throw new IncorrectDataException("Le champ poids est vide.");
+		}
 
-		return 0.0f;
+		try {
+			float poids = Float.parseFloat(poidsStr);
+			if (poids <= 0) {
+				throw new IncorrectDataException("Le poids doit être supérieur à 0.");
+			}
+			return poids;
+		} catch (NumberFormatException e) {
+			throw new IncorrectDataException("Le poids doit être un nombre valide.");
+		}
 	}
+
 
 	// Converti la taille de la TextView  en centimètres
 	// Tiens compte du choix des boutons radios.
